@@ -115,16 +115,16 @@
                     </LinearLayout>
 
                     <TextView
-                                android:id="@+id/textView4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/start"
-                                android:layout_marginEnd="@dimen/end"
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/end"
+                        android:layout_marginStart="@dimen/start"
                         android:layout_marginTop="@dimen/marginTop"
 
                         android:layout_weight="1"
-                                android:text="@string/text4"
-                                android:textSize="@dimen/textSize2" />
+                        android:text="@string/text4"
+                        android:textSize="@dimen/textSize2" />
 
 
                     <EditText
@@ -136,7 +136,7 @@
                         android:layout_marginTop="@dimen/marginTop"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Enter a message..."
+                        android:hint="@string/hint"
                         android:inputType="textPersonName" />
 
                     <Button
@@ -147,7 +147,7 @@
                         android:layout_marginStart="@dimen/startButton"
                         android:layout_marginTop="@dimen/marginTop"
                         android:layout_weight="1"
-                        android:text=" Send message" />
+                        android:text="@string/button" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -157,34 +157,43 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/imageButton"
+                            android:id="@+id/vkButton"
                             android:layout_width="@dimen/icons2"
                             android:layout_height="@dimen/icons2"
                             android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:padding="@dimen/socPadding"
                             android:scaleType="centerInside"
+                            android:visibility="visible"
                             app:srcCompat="@drawable/vk" />
 
                         <ImageButton
-                            android:id="@+id/imageButton2"
+                            android:id="@+id/instaButton"
                             android:layout_width="@dimen/icons2"
                             android:layout_height="@dimen/icons2"
                             android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:padding="@dimen/socPadding"
                             android:scaleType="centerInside"
                             app:srcCompat="@drawable/insta" />
 
                         <ImageButton
-                            android:id="@+id/imageButton3"
+                            android:id="@+id/telegramButton"
                             android:layout_width="@dimen/icons2"
                             android:layout_height="@dimen/icons2"
                             android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:padding="@dimen/socPadding"
                             android:scaleType="centerInside"
                             app:srcCompat="@drawable/telegram" />
 
                         <ImageButton
-                            android:id="@+id/imageButton4"
+                            android:id="@+id/githubButton"
                             android:layout_width="@dimen/icons2"
                             android:layout_height="@dimen/icons2"
                             android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:padding="@dimen/socPadding"
                             android:scaleType="centerInside"
                             app:srcCompat="@drawable/github" />
                     </LinearLayout>

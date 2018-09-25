@@ -8,6 +8,7 @@
     <dimen name="textStart">8dp</dimen>
     <dimen name="textSize">16sp</dimen>
     <dimen name="textSize2">13sp</dimen>
-    <dimen name="icons2">90dp</dimen>
+    <dimen name="icons2">60dp</dimen>
     <dimen name="textPadding">15dp</dimen>
+    <dimen name="socPadding">10dp</dimen>
 </resources>
