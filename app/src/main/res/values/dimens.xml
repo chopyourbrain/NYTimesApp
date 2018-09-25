@@ -11,4 +11,5 @@
     <dimen name="icons2">60dp</dimen>
     <dimen name="textPadding">15dp</dimen>
     <dimen name="socPadding">10dp</dimen>
+    <dimen name="photoHeight">255dp</dimen>
 </resources>
