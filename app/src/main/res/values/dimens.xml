@@ -3,6 +3,7 @@
     <dimen name="iconsW">50dp</dimen>
     <dimen name="start">30dp</dimen>
     <dimen name="startButton">170dp</dimen>
+    <dimen name="startButtonLand">100dp</dimen>
     <dimen name="marginTop">5dp</dimen>
     <dimen name="end">15dp</dimen>
     <dimen name="textStart">8dp</dimen>
@@ -12,4 +13,5 @@
     <dimen name="textPadding">15dp</dimen>
     <dimen name="socPadding">10dp</dimen>
     <dimen name="photoHeight">255dp</dimen>
+    <dimen name="photoHeightLand">222dp</dimen>
 </resources>
