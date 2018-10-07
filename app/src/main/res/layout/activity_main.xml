@@ -144,7 +144,8 @@
                 android:layout_marginTop="@dimen/marginTop"
                 android:layout_marginEnd="@dimen/end"
                 android:layout_weight="1"
-                android:text="@string/button" />
+                android:text="@string/button"
+                style="@style/Widget.AppCompat.Button.Colored"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
