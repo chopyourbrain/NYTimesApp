@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">Exercise2</string>
+    <string name="app_name">Mikhail Kuznetsov</string>
+    <string name="hint">Enter a message...</string>
+    <string name="button">Send message</string>
+    <string name="noEmail">No email app</string>
+    <string name="activity_not_found_ex">There is no apps</string>
     <string name="text1">Automation tester</string>
     <string name="text2">C++ teacher</string>
     <string name="text3">God of guitar</string>
