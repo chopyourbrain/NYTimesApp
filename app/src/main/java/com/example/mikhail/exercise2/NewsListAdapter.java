@@ -6,13 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +41,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.activity_news_list, parent, false), clickListener);
+        return new ViewHolder(inflater.inflate(R.layout.news_item, parent, false), clickListener);
     }
 
     @Override
@@ -73,13 +71,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
                     listener.onItemClick(newsItems.get(position));
                 }
             });
-            imageView = itemView.findViewById(R.id.textView5);
-            labelView = itemView.findViewById(R.id.imageView5);
+            imageView = itemView.findViewById(R.id.imageView5);
+            labelView = itemView.findViewById(R.id.textView5);
             textView = itemView.findViewById(R.id.textView6);
         }
 
         void bind(NewsItem newsItem) {
-        //    imageLoader.load(newsItem.getImageUrl()).into(imageView);
+            imageLoader.load(newsItem.getImageUrl()).into(imageView);
             labelView.setText(newsItem.getTitle());
             textView.setText(newsItem.getPreviewText());
         }
