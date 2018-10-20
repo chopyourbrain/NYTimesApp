@@ -62,6 +62,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         private final ImageView imageView;
         private final TextView labelView;
         private final TextView textView;
+        private final TextView dateView;
+        private final TextView categoryView;
 
         ViewHolder(@NonNull View itemView, @Nullable OnItemClickListener listener) {
             super(itemView);
@@ -71,15 +73,18 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
                     listener.onItemClick(newsItems.get(position));
                 }
             });
-            imageView = itemView.findViewById(R.id.imageView5);
-            labelView = itemView.findViewById(R.id.textView5);
-            textView = itemView.findViewById(R.id.textView6);
+            imageView = itemView.findViewById(R.id.imgNews);
+            labelView = itemView.findViewById(R.id.label);
+            textView = itemView.findViewById(R.id.textNews);
+            dateView = itemView.findViewById(R.id.date);
+            categoryView = itemView.findViewById(R.id.category);
         }
 
         void bind(NewsItem newsItem) {
             imageLoader.load(newsItem.getImageUrl()).into(imageView);
             labelView.setText(newsItem.getTitle());
             textView.setText(newsItem.getPreviewText());
+            dateView.setText(newsItem.);
         }
     }
 }

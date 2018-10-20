@@ -14,4 +14,6 @@
     <dimen name="socPadding">10dp</dimen>
     <dimen name="photoHeight">255dp</dimen>
     <dimen name="photoHeightLand">222dp</dimen>
+    <dimen name="itemMargin">3dp</dimen>
+    <dimen name="imageMargin">6dp</dimen>
 </resources>
