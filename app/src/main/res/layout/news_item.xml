@@ -11,10 +11,12 @@
 
         <ImageView
             android:id="@+id/imgNews"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_alignParentLeft="true"
             android:layout_margin="@dimen/imageMargin"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
@@ -31,10 +33,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="@dimen/itemMargin"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif-condensed"
                 android:maxLines="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textStyle="italic"
                 tools:text="@tools:sample/first_names" />
 
             <TextView
@@ -44,8 +46,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_margin="@dimen/itemMargin"
                 android:fontFamily="serif"
-                android:maxLines="1"
-                android:textSize="18sp"
+                android:maxLines="2"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 tools:text="@tools:sample/first_names" />
 
@@ -54,6 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/itemMargin"
+                android:maxLines="3"
+                android:textSize="12sp"
                 tools:text="@tools:sample/full_names" />
 
             <TextView
@@ -64,8 +68,8 @@
                 android:layout_margin="@dimen/itemMargin"
                 android:fontFamily="serif"
                 android:maxLines="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textSize="10sp"
                 tools:text="@tools:sample/date/ddmmyy" />
         </LinearLayout>
 

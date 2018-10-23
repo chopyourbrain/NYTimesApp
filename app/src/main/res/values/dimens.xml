@@ -15,5 +15,10 @@
     <dimen name="photoHeight">255dp</dimen>
     <dimen name="photoHeightLand">222dp</dimen>
     <dimen name="itemMargin">3dp</dimen>
-    <dimen name="imageMargin">6dp</dimen>
+    <dimen name="imageMargin">3dp</dimen>
+    <dimen name="shrine_toolbar_offset_start">3dp</dimen>
+    <dimen name="shrine_toolbar_offset_top">3dp</dimen>
+    <dimen name="tall_toolbar_height">3dp</dimen>
+    <dimen name="shrine_toolbar_collapsed_height">3dp</dimen>
+    <dimen name="shrine_toolbar_image_offset_top">3dp</dimen>
 </resources>

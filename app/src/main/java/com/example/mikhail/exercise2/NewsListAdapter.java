@@ -32,8 +32,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         this.clickListener = clickListener;
 
         RequestOptions imageOption = new RequestOptions()
-                .placeholder(R.drawable.github)
-                .fallback(R.drawable.guitar)
+                .placeholder(R.drawable.ic_launcher_background)
+                .fallback(R.drawable.ic_launcher_background)
                 .centerCrop();
         this.imageLoader = Glide.with(context).applyDefaultRequestOptions(imageOption);
     }
@@ -84,7 +84,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
             imageLoader.load(newsItem.getImageUrl()).into(imageView);
             labelView.setText(newsItem.getTitle());
             textView.setText(newsItem.getPreviewText());
-            dateView.setText(newsItem.);
+            dateView.setText(newsItem.getPublishDate().toString());
+            categoryView.setText(newsItem.getCategory().getName());
         }
+
     }
 }

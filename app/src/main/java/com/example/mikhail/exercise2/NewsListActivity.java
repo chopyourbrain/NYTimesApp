@@ -1,6 +1,7 @@
 package com.example.mikhail.exercise2;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,13 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class NewsListActivity extends AppCompatActivity {
 
 
-    private final NewsListAdapter.OnItemClickListener clickListener = newsItem -> {
+    private final NewsListAdapter.OnItemClickListener clickListener = newsItem -> { NewsDetailsActivity.start(this, newsItem);
     };
 
     @Override
@@ -29,13 +31,11 @@ public class NewsListActivity extends AppCompatActivity {
 
         RecyclerView list = findViewById(R.id.recycler);
         list.setAdapter(new NewsListAdapter(this, DataUtils.generateNews(), clickListener));
+        if (getApplicationContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
         list.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+        else
+            list.setLayoutManager(new GridLayoutManager(this,2));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override
