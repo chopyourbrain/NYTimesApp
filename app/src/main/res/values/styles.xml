@@ -14,4 +14,8 @@
         <item name="cardElevation">3dp</item>
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

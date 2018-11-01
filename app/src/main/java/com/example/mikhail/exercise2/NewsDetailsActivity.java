@@ -1,22 +1,17 @@
 package com.example.mikhail.exercise2;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.io.Serializable;
-import java.util.Date;
-
-public class NewsDetailsActivity extends AppCompatActivity {
+public class NewsDetailsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +22,8 @@ public class NewsDetailsActivity extends AppCompatActivity {
                 .fallback(R.drawable.ic_launcher_background)
                 .centerCrop();
         Glide.with(this).applyDefaultRequestOptions(imageOption).load(getIntent().getStringExtra("imgurl")).into(imageView);
-        TextView title = findViewById(R.id.titleDetail);
-        title.setText(getIntent().getStringExtra("title"));
+        CollapsingToolbarLayout title = findViewById(R.id.main_collapsing);
+        title.setTitle(getIntent().getStringExtra("title"));
         TextView text = findViewById(R.id.textDetail);
         text.setText(getIntent().getStringExtra("text"));
         TextView category = findViewById(R.id.categoryDetail);
@@ -36,6 +31,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
         TextView date = findViewById(R.id.dateDetail);
         date.setText(getIntent().getStringExtra("date"));
     }
+
     public static void start(Activity activity, NewsItem newsItem) {
         Intent intent = new Intent(activity, NewsDetailsActivity.class);
         intent.putExtra("imgurl", newsItem.getImageUrl());
