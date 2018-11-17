@@ -12,14 +12,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
 public class NewsListActivity extends AppCompatActivity {
 
 
-    private final NewsListAdapter.OnItemClickListener clickListener = newsItem -> { NewsDetailsActivity.start(this, newsItem);
+    private final NewsListAdapter.OnItemClickListener clickListener = newsItem -> {
+        NewsDetailsActivity.start(this, newsItem);
+
     };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
 
@@ -33,9 +37,10 @@ public class NewsListActivity extends AppCompatActivity {
         if (getApplicationContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
             list.setLayoutManager(new LinearLayoutManager(this));
         else
-            list.setLayoutManager(new GridLayoutManager(this,2));
+            list.setLayoutManager(new GridLayoutManager(this, 2));
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
