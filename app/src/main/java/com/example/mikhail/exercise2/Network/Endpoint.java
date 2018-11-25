@@ -8,8 +8,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface Endpoint {
-    @NonNull
-    @GET("{category}.json")
-    Single<MyResponse> search(@Path("category") String category);
+
+    @GET("travel.json")
+    Single<MyResponse> search();
 
 }

@@ -18,8 +18,8 @@
     </android.support.v7.widget.RecyclerView>
     <com.github.glomadrian.loadingballs.BallView
         android:id="@+id/ballview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="30dp"
         android:visibility="gone"

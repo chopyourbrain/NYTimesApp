@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class DTO {
-
-    private List<PictureDTO> picture;
+    private List<PictureDTO> multimedia;
 
     @SerializedName("section")
     private String section;
@@ -15,13 +14,25 @@ public class DTO {
     private String title;
 
     @SerializedName("abstract")
-    private String text;
+    private String abstract1;
 
     @SerializedName("published_date")
     private String publishedDate;
 
     @SerializedName("url")
     private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getAbstract1() {
+        return abstract1;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
 
     public String getSection() {
         return section;
@@ -31,17 +42,7 @@ public class DTO {
         return title;
     }
 
-    public String getText() {
-        return text;
+    public List<PictureDTO> getMultimedia() {
+        return multimedia;
     }
-
-    public String getPublishedDate() {
-        return publishedDate;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public List<PictureDTO> getPicture() { return picture; }
 }

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.github.glomadrian.loadingballs.BallView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -79,7 +81,7 @@ public class NewsListActivity extends AppCompatActivity {
         showState(State.Loading);
         final Disposable searchDisposable = RestAPI.getInstance()
                 .news()
-                .search("food")
+                .search()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::showNews, this::handleError);
@@ -88,6 +90,11 @@ public class NewsListActivity extends AppCompatActivity {
 
 
     public void showNews(@NonNull MyResponse response) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
         List<DTO> newsdto = response.getData();
         news = refactorDTO(newsdto);
         list.setAdapter(new NewsListAdapter(this, news, clickListener));
@@ -99,9 +106,9 @@ public class NewsListActivity extends AppCompatActivity {
         showState(State.HasData);
     }
 
-    private void checkResponseAndShowState(@NonNull Response<MyResponse> response) {
-
-        if (!response.isSuccessful()) {
+    private void checkResponseAndShowState(@NonNull MyResponse response) {
+        showNews(response);
+  /*      if (!response.isSuccessful()) {
             showState(State.ServerError);
             return;
         }
@@ -124,6 +131,7 @@ public class NewsListActivity extends AppCompatActivity {
         }
         showNews(body);
         showState(State.HasData);
+        */
     }
 
     private void handleError(Throwable throwable) {
@@ -132,6 +140,7 @@ public class NewsListActivity extends AppCompatActivity {
             return;
         }
         showState(State.ServerError);
+        Log.d("logd",""+throwable);
     }
 
 
@@ -171,13 +180,13 @@ public class NewsListActivity extends AppCompatActivity {
         List<NewsItem> news = new ArrayList<>();
         for (DTO x : listdto) {
             String image = "";
-            for (PictureDTO y : x.getPicture()) {
+            for (PictureDTO y : x.getMultimedia()) {
                 if (y.getFormat().equals("Standard Thumbnail")) {
                     image = y.getUrl();
                     break;
                 }
             }
-            news.add(new NewsItem(x.getTitle(), image, x.getSection(), x.getPublishedDate().replace('T', ' '), x.getText(),x.getText()));
+            news.add(new NewsItem(x.getTitle(), image, x.getSection(), x.getPublishedDate().replace('T', ' '), x.getAbstract1(),x.getAbstract1()));
         }
         return news;
     }

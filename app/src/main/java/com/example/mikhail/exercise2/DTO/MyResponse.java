@@ -7,10 +7,10 @@ import java.util.List;
 import io.reactivex.annotations.Nullable;
 
 public class MyResponse {
-    private List<DTO> data;
+    private List<DTO> results;
 
     @Nullable
     public List<DTO> getData() {
-        return data;
+        return results;
     }
 }

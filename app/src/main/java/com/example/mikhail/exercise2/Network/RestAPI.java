@@ -8,12 +8,13 @@ package com.example.mikhail.exercise2.Network;
         import okhttp3.OkHttpClient;
         import okhttp3.logging.HttpLoggingInterceptor;
         import retrofit2.Retrofit;
+        import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
         import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class RestAPI {
 
     private static final String URL = "http://api.nytimes.com/svc/topstories/v2/";
-    private static final String API_KEY = "fde4278ddd2f418d8b1565308d552669";
+    private static final String API_KEY = "061e4df5638d446eb410d57879194e30";
 
     private static final int TIMEOUT_IN_SECONDS = 2;
     private static RestAPI sRestAPI;
@@ -45,6 +46,7 @@ public final class RestAPI {
                 .baseUrl(URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
