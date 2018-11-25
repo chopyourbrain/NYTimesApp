@@ -16,7 +16,7 @@ import android.view.View;
 
 import com.example.mikhail.exercise2.DTO.DTO;
 import com.example.mikhail.exercise2.DTO.PictureDTO;
-import com.example.mikhail.exercise2.Network.MyResponse;
+import com.example.mikhail.exercise2.DTO.MyResponse;
 import com.example.mikhail.exercise2.Network.RestAPI;
 import com.github.glomadrian.loadingballs.BallView;
 
@@ -28,7 +28,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
 import retrofit2.Response;
 
 public class NewsListActivity extends AppCompatActivity {
@@ -55,6 +54,7 @@ public class NewsListActivity extends AppCompatActivity {
         }
         list = findViewById(R.id.recycler);
         ballView = findViewById(R.id.ballview);
+        loadNews("1");
     }
 
 
@@ -79,12 +79,13 @@ public class NewsListActivity extends AppCompatActivity {
         showState(State.Loading);
         final Disposable searchDisposable = RestAPI.getInstance()
                 .news()
-                .search(search)
+                .search("food")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::checkResponseAndShowState, this::handleError);
+                .subscribe(this::showNews, this::handleError);
         compositeDisposable.add(searchDisposable);
     }
+
 
     public void showNews(@NonNull MyResponse response) {
         List<DTO> newsdto = response.getData();

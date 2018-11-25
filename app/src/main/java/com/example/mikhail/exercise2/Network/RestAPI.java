@@ -1,6 +1,7 @@
 package com.example.mikhail.exercise2.Network;
 
         import android.support.annotation.NonNull;
+        import android.util.Log;
 
         import java.util.concurrent.TimeUnit;
 
@@ -12,7 +13,7 @@ package com.example.mikhail.exercise2.Network;
 public final class RestAPI {
 
     private static final String URL = "http://api.nytimes.com/svc/topstories/v2/";
-    private static final String API_KEY = "061e4df5638d446eb410d57879194e30";
+    private static final String API_KEY = "fde4278ddd2f418d8b1565308d552669";
 
     private static final int TIMEOUT_IN_SECONDS = 2;
     private static RestAPI sRestAPI;
@@ -33,7 +34,9 @@ public final class RestAPI {
         final Retrofit retrofit = buildRetrofitClient(httpClient);
 
         //init endpoints here. It's can be more then one endpoint
+        Log.d("Log","1");
         newsEndpoint = retrofit.create(Endpoint.class);
+        Log.d("Log","2");
     }
 
     @NonNull
@@ -61,7 +64,8 @@ public final class RestAPI {
     }
 
     public Endpoint news() {
-        return newsEndpoint;
+       return newsEndpoint;
+
     }
 
 }

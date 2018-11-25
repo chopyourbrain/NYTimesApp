@@ -1,4 +1,4 @@
-package com.example.mikhail.exercise2.Network;
+package com.example.mikhail.exercise2.DTO;
 
 import com.example.mikhail.exercise2.DTO.DTO;
 

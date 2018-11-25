@@ -37,7 +37,7 @@ public class NewsDetailsActivity extends Activity {
         intent.putExtra("imgurl", newsItem.getImageUrl());
         intent.putExtra("title", newsItem.getTitle());
         intent.putExtra("text", newsItem.getFullText());
-        intent.putExtra("category", newsItem.getCategory().getName());
+        intent.putExtra("category", newsItem.getCategory());
         intent.putExtra("date", newsItem.getPublishDate().toString());
         activity.startActivity(intent);
     }
