@@ -14,6 +14,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.mikhail.exercise2.DTO.DTO;
 import com.example.mikhail.exercise2.DTO.PictureDTO;
@@ -32,11 +36,15 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
+import static com.example.mikhail.exercise2.State.Loading;
+
 public class NewsListActivity extends AppCompatActivity {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     public List<NewsItem> news;
     RecyclerView list;
     BallView ballView;
+    String[] data = {"home", "world", "opinion", "national", "politics", "upshot", "nyregion", "business", "technology", "science", "health", "sports", "arts", "books", "movies",
+            "theater", "sundayreview", "fashion", "tmagazine", "food", "travel", "magazine", "realestate", "automobiles", "obituaries", "insider"};
 
     @Nullable
     private final NewsListAdapter.OnItemClickListener clickListener = newsItem -> {
@@ -56,9 +64,26 @@ public class NewsListActivity extends AppCompatActivity {
         }
         list = findViewById(R.id.recycler);
         ballView = findViewById(R.id.ballview);
-        loadNews("1");
-    }
+        showState(Loading);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, data);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        Spinner spinner = findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                loadNews(data[position]);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
@@ -78,10 +103,10 @@ public class NewsListActivity extends AppCompatActivity {
     }
 
     private void loadNews(@NonNull String search) {
-        showState(State.Loading);
+        showState(Loading);
         final Disposable searchDisposable = RestAPI.getInstance()
                 .news()
-                .search()
+                .search(search)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::showNews, this::handleError);
@@ -90,11 +115,7 @@ public class NewsListActivity extends AppCompatActivity {
 
 
     public void showNews(@NonNull MyResponse response) {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+
         List<DTO> newsdto = response.getData();
         news = refactorDTO(newsdto);
         list.setAdapter(new NewsListAdapter(this, news, clickListener));
@@ -106,9 +127,9 @@ public class NewsListActivity extends AppCompatActivity {
         showState(State.HasData);
     }
 
-    private void checkResponseAndShowState(@NonNull MyResponse response) {
+ /*   private void checkResponseAndShowState(@NonNull MyResponse response) {
         showNews(response);
-  /*      if (!response.isSuccessful()) {
+      if (!response.isSuccessful()) {
             showState(State.ServerError);
             return;
         }
@@ -131,8 +152,8 @@ public class NewsListActivity extends AppCompatActivity {
         }
         showNews(body);
         showState(State.HasData);
-        */
-    }
+
+    } */
 
     private void handleError(Throwable throwable) {
         if (throwable instanceof IOException) {

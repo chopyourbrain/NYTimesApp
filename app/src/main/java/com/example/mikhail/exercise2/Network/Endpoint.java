@@ -9,7 +9,7 @@ import retrofit2.http.Path;
 
 public interface Endpoint {
 
-    @GET("travel.json")
-    Single<MyResponse> search();
+    @GET("{category}.json")
+    Single<MyResponse> search(@Path("category") String search);
 
 }
