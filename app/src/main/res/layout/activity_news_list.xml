@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lib="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recycler"
+    android:id="@+id/relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NewsListActivity"
     tools:listitem="@layout/news_item"
-    >
-</android.support.v7.widget.RecyclerView>
+    android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"></Spinner>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewsListActivity"
+        tools:listitem="@layout/news_item">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <com.github.glomadrian.loadingballs.BallView
+        android:id="@+id/ballview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:visibility="gone"
+        lib:ball_colors="@array/colors"
+        lib:ball_size="5dp"
+        lib:balls="10"
+        lib:enable_size_animation="false"
+        lib:movement_cycle_time="2500"
+        lib:path="star" />
+</LinearLayout>
+

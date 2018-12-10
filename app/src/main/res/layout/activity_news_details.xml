@@ -2,9 +2,9 @@
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/background_light"
     android:fitsSystemWindows="true">
 
@@ -12,21 +12,19 @@
         android:id="@+id/main.appbar"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true"
-        >
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/main_collapsing"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="38dp"
             app:expandedTitleMarginEnd="44dp"
+            app:expandedTitleMarginStart="38dp"
             app:expandedTitleTextAppearance="@style/CollapsedAppBar"
-            >
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:id="@+id/imageViewDetail"
@@ -50,39 +48,40 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/marginTop"
             android:orientation="vertical">
-        <TextView
-            android:id="@+id/categoryDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/itemMargin"
-            android:fontFamily="casual"
-            android:text="TextView"
-            android:textAllCaps="true"
-            android:textSize="18sp" />
 
             <TextView
-            android:id="@+id/textDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/itemMargin"
-            android:text="TextView"
-            android:textSize="18sp" />
+                android:id="@+id/categoryDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/itemMargin"
+                android:fontFamily="casual"
+                android:text="TextView"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/dateDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/itemMargin"
-            android:fontFamily="serif-monospace"
-            android:text="TextView"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/textDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/itemMargin"
+                android:text="TextView"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/dateDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/itemMargin"
+                android:fontFamily="serif-monospace"
+                android:text="TextView"
+                android:textSize="14sp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

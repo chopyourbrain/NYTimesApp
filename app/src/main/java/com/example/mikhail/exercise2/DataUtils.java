@@ -7,7 +7,7 @@ import java.util.List;
 
     public class DataUtils {
 
-        public static List<NewsItem> generateNews() {
+    /*    public static List<NewsItem> generateNews() {
             final Category darwinAwards = new Category(1, "Darwin Awards");
             final Category criminal = new Category(2, "Criminal");
             final Category animals = new Category(3, "Animals");
@@ -137,6 +137,6 @@ import java.util.List;
 
         private static Date createDate(int year, int month, int date, int hrs, int min) {
             return new GregorianCalendar(year, month - 1, date, hrs, min).getTime();
-        }
+        } */
     }
 

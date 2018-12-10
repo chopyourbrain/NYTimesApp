@@ -84,8 +84,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
             imageLoader.load(newsItem.getImageUrl()).into(imageView);
             labelView.setText(newsItem.getTitle());
             textView.setText(newsItem.getPreviewText());
-            dateView.setText(newsItem.getPublishDate().toString());
-            categoryView.setText(newsItem.getCategory().getName());
+            dateView.setText(newsItem.getPublishDate());
+            categoryView.setText(newsItem.getCategory());
         }
 
     }
