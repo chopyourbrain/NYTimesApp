@@ -1,5 +1,7 @@
 package com.example.mikhail.exercise2;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -17,24 +19,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.mikhail.exercise2.DTO.DTO;
 import com.example.mikhail.exercise2.DTO.PictureDTO;
 import com.example.mikhail.exercise2.DTO.MyResponse;
+import com.example.mikhail.exercise2.Database.AppDatabase;
+import com.example.mikhail.exercise2.Database.NewsEntity;
 import com.example.mikhail.exercise2.Network.RestAPI;
 import com.github.glomadrian.loadingballs.BallView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 import static com.example.mikhail.exercise2.State.Loading;
 
@@ -81,6 +83,8 @@ public class NewsListActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+        AppDatabase database = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "DATABASE_NAME").build();
 
 
     }
@@ -125,6 +129,7 @@ public class NewsListActivity extends AppCompatActivity {
             list.setLayoutManager(new GridLayoutManager(this, 2));
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         showState(State.HasData);
+        saveData(refactorToDao(news),getApplicationContext());
     }
 
  /*   private void checkResponseAndShowState(@NonNull MyResponse response) {
@@ -208,6 +213,35 @@ public class NewsListActivity extends AppCompatActivity {
                 }
             }
             news.add(new NewsItem(x.getTitle(), image, x.getSection(), x.getPublishedDate().replace('T', ' '), x.getAbstract1(),x.getAbstract1()));
+        }
+        return news;
+    }
+    private void saveData(List<NewsEntity> newsList, Context context) {
+        AppDatabase db = AppDatabase.getAppDatabase(context);
+
+        db.newsDao().deleteAll();
+
+        NewsEntity[] news = newsList.toArray(new NewsEntity[newsList.size()]);
+
+        db.newsDao().insertAll(news);
+
+    }
+
+    private Observable<List<NewsEntity>> getData(Context context) {
+        AppDatabase db = AppDatabase.getAppDatabase(context);
+
+        return db.newsDao().getAll();
+    }
+
+    private List<NewsEntity> refactorToDao (List<NewsItem> newsList) {
+        List<NewsEntity> news = new ArrayList<>();
+        for (NewsItem x : newsList ) {
+            NewsEntity k = new NewsEntity();
+            k.setTitle(x.getTitle());
+            k.setAbstract1(x.getFullText());
+            k.setSection(x.getCategory());
+            k.setPublished_date(x.getPublishDate());
+            k.setUrl(x.getImageUrl());
         }
         return news;
     }
